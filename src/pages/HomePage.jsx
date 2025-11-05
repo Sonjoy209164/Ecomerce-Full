@@ -1,8 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
+import { useEffect , useState} from "react";
 import { Header } from "../components/Header";
-import { products } from "../../ecommerce-project/data/products";
+//import { products } from "../../ecommerce-project/data/products";
 import "./HomePage.css";
 export function HomePage() {
+  //const [element , updater funclets us update bthe value and regenerate the html ]= useState([]);
+  const [products,setProducts]= useState([]);
+
   // fetch('http://localhost:3000/api/products')
   // .then((response)=>{
   //   //console.log(response.json())
@@ -13,21 +17,34 @@ export function HomePage() {
 
   //   });
   //   });
-  
 
   // instead of this we use
-                  // fetch("http://localhost:3000/api/products")
-                  //   .then((response) => {
-                  //     return response.json();
-                  //   })
-                  //   .then((data) => {
-                  //     console.log(data);
-                  //   });
+  // fetch("http://localhost:3000/api/products")
+  //   .then((response) => {
+  //     return response.json();
+  //   })
+  //   .then((data) => {
+  //     console.log(data);
+  //   });
   //we can make it cleaner by using axios
-  axios.get('http://localhost:3000/api/products')
-  .then((response)=>{
-    console.log(response.data)
-  })
+  // axios.get('http://localhost:3000/api/products')
+  // .then((response)=>{
+  //   console.log(response.data)
+  // })
+
+  //this code will run whenever the home page is reloaded
+  //but we need to run it once so we will use useEffect
+  //use effect run this lines every time the component is updated or created 
+  // we can use a dependency array = controls when use effect runs
+  //[] empty array means run only once after the component is created 
+  useEffect(() => {
+    axios.get("http://localhost:3000/api/products").then((response) => {
+      //console.log(response.data);
+      setProducts(response.data);
+    });
+  },[]);
+  // now to render save the product data inside the state
+
   return (
     <>
       <title>Ecomerce Project</title>

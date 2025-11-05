@@ -39,11 +39,11 @@ export function HomePage() {
   // we can use a dependency array = controls when use effect runs
   //[] empty array means run only once after the component is created 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/products").then((response) => {
+    axios.get("api/products").then((response) => {
       //console.log(response.data);
       setProducts(response.data);
     });
-    axios.get("http://localhost:3000/api/cart-items").then((response)=>{
+    axios.get("api/cart-items").then((response)=>{
       //console.log(response.data);
       setCart(response.data)
     });

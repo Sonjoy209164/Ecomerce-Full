@@ -3,10 +3,10 @@ import { useEffect , useState} from "react";
 import { Header } from "../components/Header";
 //import { products } from "../../ecommerce-project/data/products";
 import "./HomePage.css";
-export function HomePage() {
+export function HomePage({cart}) {
   //const [element , updater funclets us update bthe value and regenerate the html ]= useState([]);
   const [products,setProducts]= useState([]);
-  const [cart,setCart]= useState([]);
+
 
   // fetch('http://localhost:3000/api/products')
   // .then((response)=>{
@@ -43,10 +43,7 @@ export function HomePage() {
       //console.log(response.data);
       setProducts(response.data);
     });
-    axios.get("api/cart-items").then((response)=>{
-      //console.log(response.data);
-      setCart(response.data)
-    });
+
   },[]);
   // now to render save the product data inside the state
 

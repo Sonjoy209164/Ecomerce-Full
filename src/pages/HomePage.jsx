@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Header } from "../components/Header";
 import { products } from "../../ecommerce-project/data/products";
 import "./HomePage.css";
@@ -12,16 +13,21 @@ export function HomePage() {
 
   //   });
   //   });
+  
 
   // instead of this we use
-  fetch("http://localhost:3000/api/products")
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-    });
-
+                  // fetch("http://localhost:3000/api/products")
+                  //   .then((response) => {
+                  //     return response.json();
+                  //   })
+                  //   .then((data) => {
+                  //     console.log(data);
+                  //   });
+  //we can make it cleaner by using axios
+  axios.get('http://localhost:3000/api/products')
+  .then((response)=>{
+    console.log(response.data)
+  })
   return (
     <>
       <title>Ecomerce Project</title>
